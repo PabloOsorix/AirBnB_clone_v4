@@ -127,11 +127,9 @@ const section_places = document.querySelector("section.places");
       const divUser = document.createElement("div");
       divUser.className = "User";
       const owner = document.createElement("b");
-      const user_inf = fetchUserInf(place.user_id);
-      // const text =  user_inf[0].first_name + user_inf[0].last_name;
-      owner.textContent = "Owner: " + user_inf["first_name"];
+      //const user_inf = fetchUserInf(place.user_id);
+      owner.textContent = "Owner: ";
       // divUser.after(owner, text);
-      //divUser.textContent = place.user.first_name + place.user.last_name;
       divUser.appendChild(owner);
       article.appendChild(divUser);
 
