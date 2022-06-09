@@ -1,6 +1,3 @@
-// document.addEventListener("DOMContentLoaded", () => {
-//    alert("DOM ready!");
-// });
 function removeId(array, value) {
     var index = 0;
     while (index < array.length) {
@@ -12,43 +9,42 @@ function removeId(array, value) {
     }
     return array;
   }
-
-
 /*async function fetchUserInf(user_id) {
-  return fetch(`http://localhost:5001/api/v1/users/${user_id}`,
+  fetch(`http://localhost:5001/api/v1/users/${user_id}`,
   {
     method: "GET",
     headers: {
       'Accept': 'application/json',
       'Content-Type': 'application/json',
-  },
-  })
-  .then(response => response.json())
-  .then((data) => {
-    Promise.revolve(data).then((value) => { return value});
-    })
-    .catch(error => console.warn(error));
+    }
+    });
+    const info = await response.json
+    return info
 }*/
 
+
+// POINT 2
 var amenities = [];
 var select_amt = []
 var counter = 0;
 const checkboxes = document.querySelectorAll("input[name=check]").forEach(function(element){
-  element.addEventListener('click', function() {
-    var id = element.getAttribute("data-id")
-    var name = element.getAttribute("data-name")
-    if (this.checked){
-      amenities.push(id)
-      select_amt.push(name)
-      document.getElementById("select_amt").textContent = select_amt
-    } else {
-      removeId(amenities, id)
-      removeId(select_amt, name)
-      document.getElementById("select_amt").textContent = select_amt
-    }
-  });
+element.addEventListener('click', function() {
+  var id = element.getAttribute("data-id")
+  var name = element.getAttribute("data-name")
+  if (this.checked){
+    amenities.push(id)
+    select_amt.push(` ${name}`)
+    document.getElementById("select_amt").textContent = select_amt
+  } else {
+    name = ` ${name}`
+    removeId(amenities, id)
+    removeId(select_amt, name)
+    document.getElementById("select_amt").textContent = select_amt
+  }
+    });
 });
 
+// POINT 3
 const div_circle = document.querySelector("div#api_status");
   fetch("http://localhost:5001/api/v1/status").then((response) => {
     if (response.status == 200) {
@@ -57,8 +53,9 @@ const div_circle = document.querySelector("div#api_status");
         div_circle.className.replace(" available", "");
     }
   });
-  
-  
+
+
+//POINT 4
 const section_places = document.querySelector("section.places");
   fetch("http://localhost:5001/api/v1/places_search/", {
       method: "POST",
@@ -145,4 +142,4 @@ const section_places = document.querySelector("section.places");
       }
       article.appendChild(divDescrip);
       })
-  });
+});
