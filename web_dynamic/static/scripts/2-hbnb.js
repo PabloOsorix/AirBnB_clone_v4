@@ -1,19 +1,6 @@
-document.addEventListener("DOMContentLoaded", () => {
-    alert("DOM ready!");
-});
-
-
-
-
-var div_circle = document.getElementById("api_status");
-var response = await fetch("http://172.26.248.241:5001/api/v1/status");
-
-if (response.status == 200) {
-  div_circle.classList.add("available");
-} else {
- div_circle.style.backgroundColor = "gray";
-}
-
+// document.addEventListener("DOMContentLoaded", () => {
+//    alert("DOM ready!");
+// });
 function removeId(array, value) {
   var index = 0;
   while (index < array.length) {
@@ -46,3 +33,12 @@ const checkboxes = document.querySelectorAll("input[name=check]").forEach(functi
     }
   });
 });
+
+const div_circle = document.querySelector("div#api_status");
+  fetch("http://localhost:5001/api/v1/status").then((response) => {
+    if (response.status == 200) {
+        div_circle.className += " available";
+    } else {
+        div_circle.className.replace(" available", "");
+    }
+  });
