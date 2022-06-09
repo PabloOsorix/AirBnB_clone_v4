@@ -14,7 +14,7 @@ function removeId(array, value) {
   }
 
 
-async function fetchUserInf(user_id) {
+/*async function fetchUserInf(user_id) {
   return fetch(`http://localhost:5001/api/v1/users/${user_id}`,
   {
     method: "GET",
@@ -28,7 +28,7 @@ async function fetchUserInf(user_id) {
     Promise.revolve(data).then((value) => { return value});
     })
     .catch(error => console.warn(error));
-}
+}*/
 
 var amenities = [];
 var select_amt = []
@@ -49,14 +49,14 @@ const checkboxes = document.querySelectorAll("input[name=check]").forEach(functi
   });
 });
 
-// const div_circle = document.querySelector("div#api_status");
-//   fetch("http://localhost:5001/api/v1/status").then((response) => {
-//     if (response.status == 200) {
-//         div_circle.className += " available";
-//     } else {
-//         div_circle.className.replace(" available", "");
-//     }
-//   });
+const div_circle = document.querySelector("div#api_status");
+  fetch("http://localhost:5001/api/v1/status").then((response) => {
+    if (response.status == 200) {
+        div_circle.className += " available";
+    } else {
+        div_circle.className.replace(" available", "");
+    }
+  });
   
   
 const section_places = document.querySelector("section.places");
@@ -134,6 +134,8 @@ const section_places = document.querySelector("section.places");
       //divUser.textContent = place.user.first_name + place.user.last_name;
       divUser.appendChild(owner);
       article.appendChild(divUser);
+
+
       /* Create tag div that it's child of article, its class is Description, it
           contains the description of a place.*/
       const divDescrip = document.createElement("div"); 
@@ -144,8 +146,5 @@ const section_places = document.querySelector("section.places");
         divDescrip.textContent = "None";
       }
       article.appendChild(divDescrip);
-
-
-      
       })
   });
