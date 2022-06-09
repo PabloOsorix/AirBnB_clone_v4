@@ -23,12 +23,10 @@ const checkboxes = document.querySelectorAll("input[name=check]").forEach(functi
     if (this.checked){
       amenities.push(id)
       select_amt.push(name)
-      window.alert("It's check " + amenities)
       document.getElementById("select_amt").textContent = select_amt
     } else {
       removeId(amenities, id)
       removeId(select_amt, name)
-      window.alert(amenities)
       document.getElementById("select_amt").textContent = select_amt
     }
   });
